@@ -6,18 +6,25 @@ import static org.mockito.Mockito.when;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
 
+@ExtendWith(MockitoExtension.class)
 class SomeBusinessMockTest {
 	
-	SomeBusiness someBusiness=new SomeBusiness();
+	@InjectMocks // Where all the mocks will be injected
+	SomeBusiness someBusiness;
 	//Mocking 
-	SomeDataService someDataServiceMocked= mock(SomeDataService.class);
+	@Mock
+	SomeDataService someDataServiceMocked;
 	
-	
-	@BeforeEach
-	public void beforeEach() {
-		someBusiness.setSomeDataService(someDataServiceMocked);
-	}
+//	Automaticallu setter is called
+//	@BeforeEach
+//	public void beforeEach() {
+//		someBusiness.setSomeDataService(someDataServiceMocked);
+//	}
 
 	@Test
 	void calculateSumUsingDataService_basic() {
