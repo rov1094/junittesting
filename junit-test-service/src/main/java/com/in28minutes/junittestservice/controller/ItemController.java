@@ -1,5 +1,7 @@
 package com.in28minutes.junittestservice.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -20,7 +22,12 @@ public class ItemController {
 	
 	@GetMapping("/item-from-business-service")
 	public Item serviceItem() {
-		return itemBusinessService.handCodedeItem();
+		return itemBusinessService.hardCodedeItem();
+	}
+	
+	@GetMapping("/all-items-from-db")
+	public List<Item> allItemFromDB() {
+		return itemBusinessService.allItemFromDB();
 	}
 
 }
